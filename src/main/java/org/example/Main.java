@@ -155,6 +155,49 @@ public class Main {
         int lastocc = lastOccurrenceOfAnElem(arr, elem);
         int firstocc = firstOccurrenceOfAnElem(arr, elem);
         return lastocc - firstocc + 1;
+
     }
 
-}
+    // find no of times a array is sorted (sorted rotated array)
+
+    public static int countNumOfOccurenceOfAnElem(int[] arr) {
+
+        int start = 0; int end = arr.length -1;
+
+        while (start <= end) {
+
+            int mid = start + (end -start)/2;
+
+            int prev = (mid -1) %arr.length;
+            int nex = (mid +arr.length -1) % arr.length;
+
+            if( arr[nex]<=arr[mid] && arr[mid] <= arr[prev]) {
+                return mid;
+            }
+
+            if(arr[start] < arr[mid]) {
+                start = mid +1;
+            } else if (arr[end] > arr[mid]) {
+                end = mid-1;
+
+            }
+
+
+        }
+        return -1;
+
+
+
+    }
+
+    //     find the element in a sorted rotated array
+
+    public static int findElemInSortedRoatedArray(int[] arr) {
+
+        int rotatedIndex =countNumOfOccurenceOfAnElem(arr);
+
+        // binarysearch, start rotatedIndex-1
+        // binarysearch,  rotatedIndex, end
+        return -1;
+    }
+    }
